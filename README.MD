@@ -1,6 +1,5 @@
 # FLAPPY BIRD MULTIPLAYER WITH UNREAL ENGINE AND C ++
-## In this project I will create a flappyBird multiplayer
-using nodes and C ++ on Unreal Engine.
+## In this project I will create a flappyBird multiplayer using nodes and C ++ on Unreal Engine.
 
 An important issue is that I will verify how the license works
 for free RIDER FOR UNREAL ENGINE projects.
@@ -14,7 +13,7 @@ experiment with Unreal Engine C ++ using the RIDER FOR UNREAL ENGINE editor.
 
 
 
-# Español:
+## Español:
 
 # FLAPPY BIRD MULTIPLAYER CON UNREAL ENGINE Y C++
 En este proyecto creare un flappyBird multiplayer
