@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "MoverColumna.h"
+#include "Engine/World.h"
 
 // Sets default values for this component's properties
 UMoverColumna::UMoverColumna()
@@ -13,13 +13,13 @@ UMoverColumna::UMoverColumna()
 	// ...
 }
 
-
 // Called when the game starts
 void UMoverColumna::BeginPlay()
 {
 	Super::BeginPlay();
 
 	// ...
+	columna  = GetOwner();// la columna es uno mismo
 	
 }
 
@@ -28,7 +28,13 @@ void UMoverColumna::BeginPlay()
 void UMoverColumna::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
+	
 	// ...
+}
+
+void UMoverColumna::PruebaFuncionVisibleDesdeBLueprint()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hola mundo desde C++ en un blueprint"));
+	
 }
 
