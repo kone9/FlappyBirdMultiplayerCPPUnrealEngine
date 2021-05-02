@@ -29,11 +29,13 @@ void APajaroCpp::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APajaroCpp::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	PlayerInputComponent->BindAction("clickIzqueirdo", IE_Pressed, this, &APajaroCpp::Impulsar);
+	PlayerInputComponent->BindAction("ClickIzqueirdo", IE_Pressed, this, &APajaroCpp::Impulsar);
 }
 
 void APajaroCpp::Impulsar()
 {
+
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("Hola clase hija")));
 	// (UStaticMeshComponent)pajaro->AddImpulse(FVector(0,fuerzaImpulso,0));
 	// UStaticMeshComponent* pajaroNuevo;
 	// pajaroNuevo->AddImpulse(FVector(0,fuerzaImpulso,0));
