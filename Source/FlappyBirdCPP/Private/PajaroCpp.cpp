@@ -2,6 +2,7 @@
 
 
 #include "PajaroCpp.h"
+#include "Components/StaticMeshComponent.h"
 
 // Sets default values
 APajaroCpp::APajaroCpp()
@@ -28,7 +29,14 @@ void APajaroCpp::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APajaroCpp::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAction("clickIzqueirdo", IE_Pressed, this, &APajaroCpp::Impulsar);
+}
+
+void APajaroCpp::Impulsar()
+{
+	// (UStaticMeshComponent)pajaro->AddImpulse(FVector(0,fuerzaImpulso,0));
+	// UStaticMeshComponent* pajaroNuevo;
+	// pajaroNuevo->AddImpulse(FVector(0,fuerzaImpulso,0));
 
 }
 

@@ -26,4 +26,13 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+public:
+	void Impulsar();
+
+	UPROPERTY(EditAnywhere)
+	int fuerzaImpulso = 1;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class UStaticMeshComponent> pajaro;
+
 };
