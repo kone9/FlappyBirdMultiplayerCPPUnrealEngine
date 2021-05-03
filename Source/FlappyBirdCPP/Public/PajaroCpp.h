@@ -31,8 +31,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	int fuerzaImpulso = 1;
-
+	
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<class UStaticMeshComponent> pajaro;
+	class UStaticMeshComponent* pajaroMesh;
+
 
 };
