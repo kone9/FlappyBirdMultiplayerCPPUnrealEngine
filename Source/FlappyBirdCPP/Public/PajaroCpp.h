@@ -29,11 +29,18 @@ public:
 public:
 	void Impulsar();
 
+	//class Aactor* parent = nullptr;
+	
 	UPROPERTY(EditAnywhere)
 	int fuerzaImpulso = 1;
 	
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* pajaroMesh;
 
+	UPROPERTY()
+	USceneComponent* raizDelBlueprint;
+
+	/*UPROPERTY(EditAnywhere)
+	class Ucamera* pajaroMesh;*/
 
 };
