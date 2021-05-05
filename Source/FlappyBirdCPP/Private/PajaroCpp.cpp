@@ -38,13 +38,15 @@ void APajaroCpp::BeginPlay()
 void APajaroCpp::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+	desplazamiento.Y = velocidadDeMovimiento * DeltaTime;
+
+	pajaroMesh->AddRelativeLocation(desplazamiento);
 }
 
 // Called to bind functionality to input
 void APajaroCpp::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	PlayerInputComponent->BindAction("ClickIzqueirdo", IE_Repeat, this, &APajaroCpp::Impulsar);
+	PlayerInputComponent->BindAction("ClickIzqueirdo", IE_Pressed, this, &APajaroCpp::Impulsar);
 }
 
 void APajaroCpp::Impulsar()
