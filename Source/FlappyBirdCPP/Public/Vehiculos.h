@@ -32,5 +32,5 @@ public:
 	UPROPERTY(EditAnywhere)
 	int velocity = 1;//velocidad del vehiculo
 
-	AActor* vehiculeActor;
+	/*AActor* vehiculeActor;*/
 };
