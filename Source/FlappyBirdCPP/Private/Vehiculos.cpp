@@ -20,6 +20,7 @@ AVehiculos::AVehiculos()
 void AVehiculos::BeginPlay()
 {
 	Super::BeginPlay();
+	vehiculeActor = GetOwner();
 	
 }
 
@@ -27,6 +28,12 @@ void AVehiculos::BeginPlay()
 void AVehiculos::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	vehicle->AddRelativeLocation(vehicle->GetForwardVector() * velocity);//se mueve siempre en direccion hacia el forward
+
+	FVector location = GetActorLocation();
+
+	location = location + GetActorForwardVector() * velocity * DeltaTime;
+
+	vehiculeActor->SetActorLocation(location);
+	//vehicle->AddRelativeLocation(vehicle->GetForwardVector() * velocity);//se mueve siempre en direccion hacia el forward
 }
 
