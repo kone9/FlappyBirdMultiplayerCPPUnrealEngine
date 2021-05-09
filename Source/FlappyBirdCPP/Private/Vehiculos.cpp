@@ -32,6 +32,8 @@ void AVehiculos::Tick(float DeltaTime)
 	FVector location = GetActorLocation();
 
 	location = location + GetActorForwardVector() * velocity * DeltaTime;
+
+
 	SetActorLocation(location);
 	//vehiculeActor->SetActorLocation(location);
 	//vehicle->AddRelativeLocation(vehicle->GetForwardVector() * velocity);//se mueve siempre en direccion hacia el forward
