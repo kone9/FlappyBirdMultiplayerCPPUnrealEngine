@@ -2,12 +2,16 @@
 
 
 #include "InstanceVehiculePoint.h"
+#include "Engine/World.h"
+#include "TimerManager.h"
 
 // Sets default values
 AInstanceVehiculePoint::AInstanceVehiculePoint()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	RootOfBlueprint = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponentOfBlueprint"));
+	RootComponent = RootOfBlueprint;
 
 }
 
@@ -15,6 +19,10 @@ AInstanceVehiculePoint::AInstanceVehiculePoint()
 void AInstanceVehiculePoint::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//instanceVehicules();//instancio un vehiculo al iniciar
+
+	GetWorldTimerManager().SetTimer(cronometro, this, &AInstanceVehiculePoint::instanceVehicules, timpoAinstanciar, true);//instancia un vehiculo cada cierto tiempo
 	
 }
 
@@ -22,6 +30,15 @@ void AInstanceVehiculePoint::BeginPlay()
 void AInstanceVehiculePoint::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
 
+//para instanciar un vehiculo dentro de una lista de forma aleatorio
+void AInstanceVehiculePoint::instanceVehicules()
+{
+	//putero a un objeto de arreglo para instanciar aleatoriamente
+	//TSubclassOf<AActor> vehiculoAleatorio = *Cast< TSubclassOf<AActor>  >(vehiculesAInstance[ FMath::RandRange ( 0, vehiculesAInstance.Num() -1 )]);
+	//GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, GetActorLocation(), GetActorRotation());//instancia a la escena
+
+	GetWorld()->SpawnActor<AActor>(vehiculesAInstance[FMath::RandRange(0, vehiculesAInstance.Num() - 1)], GetActorLocation(), GetActorRotation());//instancia a la escena
 }
 

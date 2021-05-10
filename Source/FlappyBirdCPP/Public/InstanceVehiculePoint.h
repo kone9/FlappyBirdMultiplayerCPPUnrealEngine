@@ -23,6 +23,17 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
+protected:
+	UPROPERTY()
+		class USceneComponent* RootOfBlueprint;//el blueprint root
+
 	UPROPERTY(EditAnywhere)
-	TArray<AActor*> vehicules;
+		TArray< TSubclassOf<AActor> > vehiculesAInstance;//array de blueprint de los archivos
+	
+	UPROPERTY(EditAnywhere)
+	float timpoAinstanciar = 2.5f;//el tiempo a instanciar
+
+	FTimerHandle cronometro;//para el timer instanciar
+	
+	void instanceVehicules();//para instanciar los vehiculos
 };
