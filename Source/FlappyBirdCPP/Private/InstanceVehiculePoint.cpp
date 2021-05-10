@@ -20,7 +20,7 @@ void AInstanceVehiculePoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//instanceVehicules();//instancio un vehiculo al iniciar
+	instanceVehicules();//instancio un vehiculo al iniciar
 
 	GetWorldTimerManager().SetTimer(cronometro, this, &AInstanceVehiculePoint::instanceVehicules, timpoAinstanciar, true);//instancia un vehiculo cada cierto tiempo
 	
