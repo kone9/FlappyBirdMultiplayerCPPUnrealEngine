@@ -20,7 +20,7 @@ void AInstanceVehiculePoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//instanceVehicules();//instancio un vehiculo al iniciar
+	instanceVehicules();//instancio un vehiculo al iniciar
 
 	GetWorldTimerManager().SetTimer(cronometro, this, &AInstanceVehiculePoint::instanceVehicules, timpoAinstanciar, true);//instancia un vehiculo cada cierto tiempo
 	
@@ -36,9 +36,14 @@ void AInstanceVehiculePoint::Tick(float DeltaTime)
 void AInstanceVehiculePoint::instanceVehicules()
 {
 	//putero a un objeto de arreglo para instanciar aleatoriamente
-	//TSubclassOf<AActor> vehiculoAleatorio = *Cast< TSubclassOf<AActor>  >(vehiculesAInstance[ FMath::RandRange ( 0, vehiculesAInstance.Num() -1 )]);
-	//GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, GetActorLocation(), GetActorRotation());//instancia a la escena
-
-	GetWorld()->SpawnActor<AActor>(vehiculesAInstance[FMath::RandRange(0, vehiculesAInstance.Num() - 1)], GetActorLocation(), GetActorRotation());//instancia a la escena
+	TSubclassOf<AActor> vehiculoAleatorio = vehiculesAInstance[ FMath::RandRange ( 0, vehiculesAInstance.Num() -1 )];
+	
+	AActor* vehiculoenEscena =  GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, GetActorLocation(), GetActorRotation());//instancia a la escena
+	vehiculoenEscena->AttachToActor(rootDeTodosLosVehiculos, FAttachmentTransformRules::KeepWorldTransform);
+																														  //if (rootDeTodosLosVehiculos != nullptr)
+	//{
+	//	vehiculoenEscena->AttachToActor(vehiculoenEscena,rootDeTodosLosVehiculos);//hago que sea hijo de ese actor en escena
+	//}
+	//GetWorld()->SpawnActor<AActor>(vehiculesAInstance[FMath::RandRange(0, vehiculesAInstance.Num() - 1)], GetActorLocation(), GetActorRotation());//instancia a la escena
 }
 

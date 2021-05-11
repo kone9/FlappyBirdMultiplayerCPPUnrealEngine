@@ -31,9 +31,12 @@ protected:
 		TArray< TSubclassOf<AActor> > vehiculesAInstance;//array de blueprint de los archivos
 	
 	UPROPERTY(EditAnywhere)
-	float timpoAinstanciar = 2.5f;//el tiempo a instanciar
+		float timpoAinstanciar = 2.5f;//el tiempo a instanciar
 
 	FTimerHandle cronometro;//para el timer instanciar
 	
+	UPROPERTY(EditAnywhere)
+		AActor* rootDeTodosLosVehiculos = nullptr;
+
 	void instanceVehicules();//para instanciar los vehiculos
 };
