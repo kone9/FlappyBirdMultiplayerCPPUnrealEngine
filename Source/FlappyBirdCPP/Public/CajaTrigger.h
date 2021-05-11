@@ -23,5 +23,18 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere)
+		bool leftPosition = false;//posicion izquierda
+	UPROPERTY(EditAnywhere)
+		bool rightPosition = false;//posicion Derecho
+	UPROPERTY(EditAnywhere)
+		bool forwardPosition = false;//posicion Adelante
+	UPROPERTY(EditAnywhere)
+		bool backPosition = false;//posicion Atras
+	UPROPERTY(EditAnywhere)
+	class AActor* posicionReinicio;
+
+private:
+	void PositionAccordingtoPositionReset(class AActor* OtherActor);//acomodar segun posicion
 	
 };

@@ -26,12 +26,52 @@ void ACajaTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
 {
 	if (OtherActor != nullptr)
 	{
-		OtherActor->Destroy();
+		//OtherActor->Destroy();
+		PositionAccordingtoPositionReset(OtherActor);//al colisionar reacomoda
 	}
+	
+
 	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("entro un cuerpo al area!"));
 	
-	/*if (OtherActor && (OtherActor != this))
-	{
+}
 
-	}*/
+//acomoda los autos dependiendo hacia adonde apunte
+void ACajaTrigger::PositionAccordingtoPositionReset(class AActor* OtherActor)
+{
+	if (backPosition)
+	{
+		OtherActor->SetActorLocation(FVector(
+			OtherActor->GetActorLocation().X,
+			posicionReinicio->GetActorLocation().Y,
+			OtherActor->GetActorLocation().Z
+		)
+		);
+	}
+	if (forwardPosition)
+	{
+		OtherActor->SetActorLocation(FVector(
+			OtherActor->GetActorLocation().X,
+			posicionReinicio->GetActorLocation().Y,
+			OtherActor->GetActorLocation().Z
+		)
+		);
+	}
+	if (leftPosition)
+	{
+		OtherActor->SetActorLocation(FVector(
+			posicionReinicio->GetActorLocation().X,
+			OtherActor->GetActorLocation().Y,
+			OtherActor->GetActorLocation().Z
+		)
+		);
+	}
+	if (rightPosition)
+	{
+		OtherActor->SetActorLocation(FVector(
+			posicionReinicio->GetActorLocation().X,
+			OtherActor->GetActorLocation().Y,
+			OtherActor->GetActorLocation().Z
+			)
+		);
+	}
 }
