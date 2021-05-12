@@ -31,7 +31,7 @@ void ACajaTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
 	}
 	
 
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("entro un cuerpo al area!"));
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("entro un cuerpo al area!"));
 	
 }
 
