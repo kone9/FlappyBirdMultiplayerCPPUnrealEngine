@@ -24,25 +24,16 @@ class FLAPPYBIRDCPP_API UMoverColumna : public UActorComponent
 	public:
 		virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int Velocidad = 0;
-	
-	protected:	
-		FVector posicionActual = FVector(0,0,0);
-	
-		UPROPERTY(VisibleAnywhere)
-		int movimiento = 0;
-	
-	public:
-		UPROPERTY(EditAnywhere) 
-		FVector posicionInicial = FVector(0,0,0);
+	protected:
+		AActor* column = nullptr;//para hacer referencia a la columna
 
-		UFUNCTION(BlueprintCallable)
-		void PruebaFuncionVisibleDesdeBLueprint();
-		
-	private:
-		AActor* columna = nullptr;
-		
-		
+		UPROPERTY(EditAnywhere)
+			int velocityMovement = 5000;//velocidad a la que se va a mover
+		UPROPERTY(EditAnywhere)
+			FVector displacement = FVector(0, 0, 0); //para calcular el desplazamiento constantemente
+		UPROPERTY(EditAnywhere)
+			FVector whenItComesRestart = FVector(0, 10000, 0);//cuando llega hasta esta posicion
+		UPROPERTY(EditAnywhere)
+			FVector resetPosition = FVector(0,-130000,0);// la posicion donde va a reiniciar
 
 };

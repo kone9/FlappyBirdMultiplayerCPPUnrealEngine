@@ -40,8 +40,8 @@ public:
 	UPROPERTY()
 	USceneComponent* raizDelBlueprint;
 	
-	UPROPERTY(EditAnywhere)
-	float velocidadDeMovimiento = -1000;
+	/*UPROPERTY(EditAnywhere)
+	float velocidadDeMovimiento = -1000;*/
 	
 	UPROPERTY(EditAnywhere)
 	FVector desplazamiento = FVector(0, 0, 0);

@@ -19,7 +19,7 @@ void UMoverColumna::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	columna  = GetOwner();// la columna es uno mismo
+	column = GetOwner();// la columna es uno mismo
 	
 }
 
@@ -30,11 +30,10 @@ void UMoverColumna::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	
 	// ...
+	displacement.Y = velocityMovement * DeltaTime;//calcula el movimiento en el eje y
+
+	column->AddActorLocalOffset(displacement);//mueve constantemente
 }
 
-void UMoverColumna::PruebaFuncionVisibleDesdeBLueprint()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hola mundo desde C++ en un blueprint"));
-	
-}
+
 

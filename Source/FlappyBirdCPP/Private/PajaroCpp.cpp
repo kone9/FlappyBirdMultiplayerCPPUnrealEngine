@@ -38,9 +38,9 @@ void APajaroCpp::BeginPlay()
 void APajaroCpp::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	desplazamiento.Y = velocidadDeMovimiento * DeltaTime;
+	/*desplazamiento.Y = velocidadDeMovimiento * DeltaTime;
 
-	pajaroMesh->AddRelativeLocation(desplazamiento);
+	pajaroMesh->AddRelativeLocation(desplazamiento);*/
 }
 
 // Called to bind functionality to input
@@ -55,8 +55,7 @@ void APajaroCpp::Impulsar()
 	pajaroMesh->SetPhysicsLinearVelocity(FVector(0, 0, 0));
 
 	pajaroMesh->AddImpulse(FVector(0, 0, fuerzaImpulso));
-	
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("Hola clase hija")));
+
 	// (UStaticMeshComponent)pajaro->AddImpulse(FVector(0,fuerzaImpulso,0));
 	// UStaticMeshComponent* pajaroNuevo;
 	// pajaroNuevo->AddImpulse(FVector(0,fuerzaImpulso,0));
