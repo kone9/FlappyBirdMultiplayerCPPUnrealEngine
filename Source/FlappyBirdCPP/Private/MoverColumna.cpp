@@ -33,6 +33,11 @@ void UMoverColumna::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	displacement.Y = velocityMovement * DeltaTime;//calcula el movimiento en el eje y
 
 	column->AddActorLocalOffset(displacement);//mueve constantemente
+	if (column->GetActorLocation().Y > 10000)
+	{
+		column->SetActorLocation(resetPosition);
+		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Tendria que reiniciar la posicion"));
+	}
 }
 
 
