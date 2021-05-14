@@ -24,7 +24,7 @@ void ACajaTrigger::BeginPlay()
 
 void ACajaTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
-	if (OtherActor != nullptr)
+	if (OtherActor != nullptr)//los punteros siempre verificar que no sean nulos
 	{
 		//OtherActor->Destroy();
 		PositionAccordingtoPositionReset(OtherActor);//al colisionar reacomoda
@@ -38,40 +38,44 @@ void ACajaTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
 //acomoda los autos dependiendo hacia adonde apunte
 void ACajaTrigger::PositionAccordingtoPositionReset(class AActor* OtherActor)
 {
-	if (backPosition)
+	if (OtherActor->ActorHasTag("Vehicule"))//si el actor tiene
 	{
-		OtherActor->SetActorLocation(FVector(
-			OtherActor->GetActorLocation().X,
-			posicionReinicio->GetActorLocation().Y,
-			OtherActor->GetActorLocation().Z
-		)
-		);
-	}
-	if (forwardPosition)
-	{
-		OtherActor->SetActorLocation(FVector(
-			OtherActor->GetActorLocation().X,
-			posicionReinicio->GetActorLocation().Y,
-			OtherActor->GetActorLocation().Z
-		)
-		);
-	}
-	if (leftPosition)
-	{
-		OtherActor->SetActorLocation(FVector(
-			posicionReinicio->GetActorLocation().X,
-			OtherActor->GetActorLocation().Y,
-			OtherActor->GetActorLocation().Z
-		)
-		);
-	}
-	if (rightPosition)
-	{
-		OtherActor->SetActorLocation(FVector(
-			posicionReinicio->GetActorLocation().X,
-			OtherActor->GetActorLocation().Y,
-			OtherActor->GetActorLocation().Z
+		if (backPosition)
+		{
+			OtherActor->SetActorLocation(FVector(
+				OtherActor->GetActorLocation().X,
+				posicionReinicio->GetActorLocation().Y,
+				OtherActor->GetActorLocation().Z
 			)
-		);
+			);
+		}
+		if (forwardPosition)
+		{
+			OtherActor->SetActorLocation(FVector(
+				OtherActor->GetActorLocation().X,
+				posicionReinicio->GetActorLocation().Y,
+				OtherActor->GetActorLocation().Z
+			)
+			);
+		}
+		if (leftPosition)
+		{
+			OtherActor->SetActorLocation(FVector(
+				posicionReinicio->GetActorLocation().X,
+				OtherActor->GetActorLocation().Y,
+				OtherActor->GetActorLocation().Z
+			)
+			);
+		}
+		if (rightPosition)
+		{
+			OtherActor->SetActorLocation(FVector(
+				posicionReinicio->GetActorLocation().X,
+				OtherActor->GetActorLocation().Y,
+				OtherActor->GetActorLocation().Z
+			)
+			);
+		}
 	}
+	
 }

@@ -36,7 +36,7 @@ void UMoverColumna::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	if (column->GetActorLocation().Y > 10000)
 	{
 		column->SetActorLocation(resetPosition);
-		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Tendria que reiniciar la posicion"));
+		//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Tendria que reiniciar la posicion"));
 	}
 }
 

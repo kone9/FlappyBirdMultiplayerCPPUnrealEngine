@@ -40,7 +40,8 @@ void AInstanceVehiculePoint::instanceVehicules()
 	
 	AActor* vehiculoenEscena =  GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, GetActorLocation(), GetActorRotation());//instancia a la escena
 	vehiculoenEscena->AttachToActor(rootDeTodosLosVehiculos, FAttachmentTransformRules::KeepWorldTransform);
-																														  //if (rootDeTodosLosVehiculos != nullptr)
+	vehiculoenEscena->Tags.Add("obstacleVehicule");//agrego el tag a ese nuevo vehiculo
+/*	InstancedVehiclesList.Add(vehiculoenEscena);	*/																								  //if (rootDeTodosLosVehiculos != nullptr)
 	//{
 	//	vehiculoenEscena->AttachToActor(vehiculoenEscena,rootDeTodosLosVehiculos);//hago que sea hijo de ese actor en escena
 	//}

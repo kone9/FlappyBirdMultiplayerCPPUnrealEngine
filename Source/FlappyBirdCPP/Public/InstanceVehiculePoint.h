@@ -36,7 +36,12 @@ protected:
 	FTimerHandle cronometro;//para el timer instanciar
 	
 	UPROPERTY(EditAnywhere)
-		AActor* rootDeTodosLosVehiculos = nullptr;
+		AActor* rootDeTodosLosVehiculos = nullptr;//el objeto root de todas las instancias
+
 
 	void instanceVehicules();//para instanciar los vehiculos
+
+//private:
+//	TArray<AActor*> InstancedVehiclesList;//array de punteros a actores de la escena
+
 };
