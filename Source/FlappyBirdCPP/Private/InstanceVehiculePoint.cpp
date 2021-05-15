@@ -4,6 +4,7 @@
 #include "InstanceVehiculePoint.h"
 #include "Engine/World.h"
 #include "TimerManager.h"
+#include "Components/ArrowComponent.h"
 
 // Sets default values
 AInstanceVehiculePoint::AInstanceVehiculePoint()
@@ -12,6 +13,16 @@ AInstanceVehiculePoint::AInstanceVehiculePoint()
 	PrimaryActorTick.bCanEverTick = true;
 	RootOfBlueprint = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponentOfBlueprint"));
 	RootComponent = RootOfBlueprint;
+	//I create the arrows to use as a guide to position the instances
+	left = CreateDefaultSubobject<UArrowComponent>(TEXT("left"));
+	right = CreateDefaultSubobject<UArrowComponent>(TEXT("right"));
+	up = CreateDefaultSubobject<UArrowComponent>(TEXT("up"));
+	down = CreateDefaultSubobject<UArrowComponent>(TEXT("down"));
+	//they are children of rootBlueprint
+	left->AttachTo(RootOfBlueprint);
+	right->AttachTo(RootOfBlueprint);
+	up->AttachTo(RootOfBlueprint);
+	down->AttachTo(RootOfBlueprint);
 
 }
 
@@ -38,7 +49,22 @@ void AInstanceVehiculePoint::instanceVehicules()
 	//putero a un objeto de arreglo para instanciar aleatoriamente
 	TSubclassOf<AActor> vehiculoAleatorio = vehiculesAInstance[ FMath::RandRange ( 0, vehiculesAInstance.Num() -1 )];
 	
-	AActor* vehiculoenEscena =  GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, GetActorLocation(), GetActorRotation());//instancia a la escena
+	//random position taking into account the arrows
+	FVector aleatoryPosition = FVector(
+		GetActorLocation().X,
+		FMath::RandRange(left->GetComponentToWorld().GetLocation().Y, right->GetComponentToWorld().GetLocation().Y),
+		FMath::RandRange(down->GetComponentToWorld().GetLocation().Z, up->GetComponentToWorld().GetLocation().Z)
+	);
+
+	//random position taking into account the arrows "Component local position"
+	FVector aleatoryLocalPosition = FVector(
+		GetActorLocation().X,
+		FMath::RandRange(left->GetComponentLocation().Y, right->GetComponentLocation().Y),
+		FMath::RandRange(down->GetComponentLocation().Z, up->GetComponentLocation().Z)
+	);
+	
+
+	AActor* vehiculoenEscena =  GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, aleatoryLocalPosition, GetActorRotation());//instancia a la escena
 	vehiculoenEscena->AttachToActor(rootDeTodosLosVehiculos, FAttachmentTransformRules::KeepWorldTransform);
 	vehiculoenEscena->Tags.Add("obstacleVehicule");//agrego el tag a ese nuevo vehiculo
 /*	InstancedVehiclesList.Add(vehiculoenEscena);	*/																								  //if (rootDeTodosLosVehiculos != nullptr)

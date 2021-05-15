@@ -38,6 +38,14 @@ protected:
 	UPROPERTY(EditAnywhere)
 		AActor* rootDeTodosLosVehiculos = nullptr;//el objeto root de todas las instancias
 
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* left = nullptr;
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* right = nullptr;
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* up = nullptr;
+	UPROPERTY(EditAnywhere)
+	class UArrowComponent* down = nullptr;
 
 	void instanceVehicules();//para instanciar los vehiculos
 
