@@ -51,20 +51,20 @@ void AInstanceVehiculePoint::instanceVehicules()
 	
 	//random position taking into account the arrows
 	FVector aleatoryPosition = FVector(
-		GetActorLocation().X,
+		FMath::RandRange(left->GetComponentToWorld().GetLocation().X, right->GetComponentToWorld().GetLocation().X),
 		FMath::RandRange(left->GetComponentToWorld().GetLocation().Y, right->GetComponentToWorld().GetLocation().Y),
 		FMath::RandRange(down->GetComponentToWorld().GetLocation().Z, up->GetComponentToWorld().GetLocation().Z)
 	);
 
-	//random position taking into account the arrows "Component local position"
-	FVector aleatoryLocalPosition = FVector(
-		GetActorLocation().X,
-		FMath::RandRange(left->GetComponentLocation().Y, right->GetComponentLocation().Y),
-		FMath::RandRange(down->GetComponentLocation().Z, up->GetComponentLocation().Z)
-	);
+	////random position taking into account the arrows "Component local position"
+	//FVector aleatoryLocalPosition = FVector(
+	//	GetActorLocation().X,
+	//	FMath::RandRange(left->GetComponentLocation().Y, right->GetComponentLocation().Y),
+	//	FMath::RandRange(down->GetComponentLocation().Z, up->GetComponentLocation().Z)
+	//);
 	
 
-	AActor* vehiculoenEscena =  GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, aleatoryLocalPosition, GetActorRotation());//instancia a la escena
+	AActor* vehiculoenEscena =  GetWorld()->SpawnActor<AActor>(vehiculoAleatorio, aleatoryPosition, GetActorRotation());//instancia a la escena
 	vehiculoenEscena->AttachToActor(rootDeTodosLosVehiculos, FAttachmentTransformRules::KeepWorldTransform);
 	vehiculoenEscena->Tags.Add("obstacleVehicule");//agrego el tag a ese nuevo vehiculo
 /*	InstancedVehiclesList.Add(vehiculoenEscena);	*/																								  //if (rootDeTodosLosVehiculos != nullptr)
